@@ -123,11 +123,7 @@ router.post("/message", auth.ensureLoggedIn, (req, res) => {
   }
 });
 
-let x = 0
-
 router.post("/blob", (req, res) => {
-  console.log("enter router post blob");
-  console.log(x++)
   const blob = new Blob({
     player_id: req.body.player_id,
     x: req.body.x,
@@ -137,7 +133,7 @@ router.post("/blob", (req, res) => {
   const query = {player_id: req.body.player_id};
   Blob.deleteMany(query, function (err) {
     if (err) console.log(err);
-    console.log("saving new blob");
+    console.log(blob);
     blob.save();
   });
   socketManager.getIo().emit("blob", blob);

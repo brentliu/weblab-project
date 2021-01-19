@@ -12,8 +12,8 @@ class Game extends Component {
         super(props);
         this.state = {
             blobs: [],
-            x: 50,
-            y: 50,
+            x: Math.random() * 100,
+            y: Math.random() * 100,
             infected: Math.random() < 0.5,
         };
         this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -42,12 +42,13 @@ class Game extends Component {
 
                 for (let i = 0; i < this.state.blobs.length; i++) {
                     let otherBlob = this.state.blobs[i];
-                    if ((otherBlob.infected ^ blob.infected) && ((blob.x - otherBlob.x) ** 2 + (blob.y - otherBlob.y) ** 2 < 5)){
+                    if ((otherBlob.infected ^ blob.infected) && ((blob.x - otherBlob.x) ** 2 + (blob.y - otherBlob.y) ** 2 < 20)){
                         if (!otherBlob.infected) {
                             otherBlob.infected = true;
                             post("/api/blob", otherBlob);
                         }
                         blob.infected = true;
+                        this.setState({infected: true,});
                     }
                 }
 
@@ -62,16 +63,6 @@ class Game extends Component {
 
         get("/api/blobs").then((blobs) => {
             this.setState({blobs: blobs});
-            /*for (let i = 0; i < blobs.length; i++) {
-                const blob = blobs[i];
-                if (blob.player_id === this.props.userId) {
-                    this.setState({
-                        x: blob.x,
-                        y: blob.y,
-                        infected: blob.infected,
-                    })
-                }
-            }*/
         })
 
         socket.on("blob", (data) => {
