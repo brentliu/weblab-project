@@ -34,15 +34,6 @@ const auth = require("./auth");
 // socket stuff
 const socketManager = require("./server-socket");
 
-// Server configuration below
-app.use(
-  session({
-    secret: "session-secret",
-    resave: false,
-    saveUninitialized: false,
-  })
-)
-
 const mongoConnectionURL = process.env.ATLAS_SRV;
 const databaseName = "brent";
 
