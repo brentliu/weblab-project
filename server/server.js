@@ -13,6 +13,8 @@
 | - Actually starts the webserver
 */
 
+require('dotenv').config();
+
 // validator runs some basic checks to make sure you've set everything up correctly
 // this is a tool provided by staff, so you don't need to worry about it
 const validator = require("./validator");
@@ -33,8 +35,15 @@ const auth = require("./auth");
 const socketManager = require("./server-socket");
 
 // Server configuration below
-const mongoConnectionURL =
-  "mongodb+srv://brent:oCR8XQMfVHLXcAW6@cluster0.e8uza.mongodb.net/<dbname>?retryWrites=true&w=majority";
+app.use(
+  session({
+    secret: "session-secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+)
+
+const mongoConnectionURL = process.env.ATLAS_SRV;
 const databaseName = "brent";
 
 // connect to mongodb
@@ -96,11 +105,10 @@ app.use((err, req, res, next) => {
 });
 
 // hardcode port to 3000 for now
-const port = 3000;
+const port = process.env.PORT || 3000;
 const server = http.Server(app);
 socketManager.init(server);
 
-/*server.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
-});*/
-server.listen(process.env.PORT || 3000)
+});
