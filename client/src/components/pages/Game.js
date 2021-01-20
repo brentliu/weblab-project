@@ -20,13 +20,19 @@ class Game extends Component {
     }
 
     handleKeyDown(event) {
-        if (event.key === "w" || event.key === "a" || event.key === "s" || event.key === "d") {
+        console.log(event.key);
+        if (event.key === "w" || event.key === "a" || event.key === "s" || event.key === "d" ||
+        event.key === "ArrowUp" || event.key === "ArrowLeft" || event.key === "ArrowDown" || event.key === "ArrowRight") {
             this.setState((state) => {
                 switch (event.key) {
                     case "w": return ({y: state.y - 1})
                     case "a": return ({x: state.x - 1})
                     case "s": return ({y: state.y + 1})
                     case "d": return ({x: state.x + 1})
+                    case "ArrowUp": return ({y: state.y - 1})
+                    case "ArrowLeft": return ({x: state.x - 1})
+                    case "ArrowDown": return ({y: state.y + 1})
+                    case "ArrowRight": return ({x: state.x + 1})
                 }
             }, () => {
                 let userId = ""
@@ -52,7 +58,6 @@ class Game extends Component {
                     }
                 }
 
-                console.log("calling api blob");
                 post("/api/blob", blob);
             })
         }

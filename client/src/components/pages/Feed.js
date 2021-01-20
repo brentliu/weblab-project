@@ -52,19 +52,8 @@ class Feed extends Component {
     return (
       <>
         <h1>Brent's Weblab Project</h1>
-        <h3>Brent made a project for WebLab. It does not work.</h3>
-        <a href="https://piazza.com/class/kic6jaqsarc70r?cid=835">https://piazza.com/class/kic6jaqsarc70r?cid=835</a>
-        <h3>Play a game of infection tag. Red is infected, green is not. If an infected and healthy player get close, the healthy player is infected. wasd for controls</h3>
-        <h3>Login, then go to Game in the nav bar to see what i have so far. You can only move six steps until the api begins to fail, after that your player is a ghost and is not actually connected to the database.</h3>
-        <h3>Hitting ctrl+s esc seems to reconnect you to the database. I'm not really sure why. You have to keep doing it tho</h3>
-        <h3>Since nothing works, here are some jokes</h3>
-        <hr/>
-        <h4>Did you hear about the mathematician who's afraid of negative numbers?</h4>
-        <h6>He'll stop at nothing to avoid them.</h6>
-        <h4>Why do we tell actors to break a leg?</h4>
-        <h6>Because every play needs a cast.</h6>
-        <h4>What do you call it when computer science majors make fun of each other?</h4>
-        <h6>Cyber boolean</h6>
+        <h3>Play a game of infection tag. Red is infected, green is not. If an infected and healthy player get close, the healthy player is infected. wasd or arrow keys for controls</h3>
+        <h3>Login, then go to Game in the nav bar.</h3>
       </>
     );
   }
