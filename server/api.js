@@ -137,6 +137,7 @@ router.post("/blob", (req, res) => {
     blob.save();
   });
   socketManager.getIo().emit("blob", blob);
+  res.send({});
 });
 
 router.get("/activeUsers", (req, res) => {
