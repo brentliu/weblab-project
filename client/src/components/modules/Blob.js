@@ -6,7 +6,7 @@ class Blob extends Component {
     }
 
     render() {
-        const myStyle = {
+        const spanStyle = {
             position: "absolute",
             left: this.props.x + "%",
             top: this.props.y + "%",
@@ -14,8 +14,17 @@ class Blob extends Component {
             width: "25px",
             background: this.props.infected ? "red" : "green",
         }
+        const pStyle = {
+            position: "absolute",
+            left: this.props.x - 2 + "%",
+            top: this.props.y - 2 + "%",
+            zIndex: 1,
+        }
         return(
-            <span style={myStyle}></span>
+            <div>
+                <p style={pStyle}>{this.props.name}</p>
+                <span style={spanStyle}></span>
+            </div>
         );
     }
 }

@@ -129,12 +129,14 @@ router.post("/blob", (req, res) => {
     x: req.body.x,
     y: req.body.y,
     infected: req.body.infected,
+    player_name: req.body.name,
   })
   const query = {player_id: req.body.player_id};
   Blob.deleteMany(query, function (err) {
     if (err) console.log(err);
-    console.log(blob);
-    blob.save();
+    if (blob.x !== null) {
+      blob.save();
+    }
   });
   socketManager.getIo().emit("blob", blob);
   res.send({});

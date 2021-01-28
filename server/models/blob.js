@@ -6,6 +6,7 @@ const BlobSchema = new mongoose.Schema({
     x: Number,
     y: Number,
     infected: Boolean,
+    player_name: String,
 });
 
 // compile model from schema
